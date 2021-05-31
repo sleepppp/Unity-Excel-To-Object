@@ -18,9 +18,17 @@ namespace Core.Data
             window.Show();
         }
 
+        DataScriptableObject m_loadData;
+
         private void OnGUI()
         {
-            
+            m_loadData = EditorGUILayout.ObjectField("Load Data", m_loadData,
+                typeof(DataScriptableObject), false, null) as DataScriptableObject;
+
+            if(GUILayout.Button("Created Data Files"))
+            {
+                
+            }
         }
     }
 }

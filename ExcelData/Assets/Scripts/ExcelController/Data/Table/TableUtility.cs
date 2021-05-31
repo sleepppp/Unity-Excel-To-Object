@@ -7,8 +7,6 @@ namespace Core.Data
 {
     public static class TableUtility
     {
-        public const string c_int = @"int|Int|INT";
-
         public static void SplitDataNameAndTypeName(string origin, out string dataName, out string typeName)
         {
             int startBracket = origin.IndexOf('(');
