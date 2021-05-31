@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace Core.Data.Table
+namespace Core.Data.Code
 {
     public class WriteWorker
     {

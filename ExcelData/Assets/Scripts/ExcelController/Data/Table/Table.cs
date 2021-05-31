@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using OfficeOpenXml;
+using System.Text.RegularExpressions;
 
-namespace Core.Data.Table
+namespace Core.Data
 {
     public class Table
     {
@@ -58,23 +59,37 @@ namespace Core.Data.Table
                 }
             }
 
-            result = new Table(sheet.Name,rowCount, colCount, titles, data);
+            result = new Table(sheet.Name,rowCount - 1, colCount, titles, data);
 
             return result;
         }
 
-        public static void SplitDataNameAndTitle(string origin, out string dataName, out string typeName)
+        public static Table Create(string fileName,string tsvText)
         {
-            int startBracket = origin.IndexOf('(');
-            int endBracket = origin.IndexOf(')');
-
-            if(startBracket == -1 || endBracket == -1)
+            Table result = null;
+            string lineSplitToken = @"\r\n|\n\r|\n|\r";
+            string[] lines = Regex.Split(tsvText, lineSplitToken);
+            if (lines == null || lines.Length <= 1)
+                return result;
+        
+            string tabToken = @"\t";
+            string[] dataNames = Regex.Split(lines[0], tabToken);
+        
+            int rowCount = lines.Length - 1;
+            int colCount = dataNames.Length;
+        
+            string[,] data = new string[rowCount, colCount];
+            for(int y =0;y < rowCount; ++y)
             {
-                throw new System.Exception("데이터 타입이 명시되어 있지 않습니다");
+                string[] line = Regex.Split(lines[y + 1], tabToken);
+
+                for(int x=0; x < colCount; ++x)
+                {
+                    data[y,x] = line[x];
+                }
             }
 
-            dataName = origin.Substring(0, startBracket);
-            typeName = origin.Substring(startBracket + 1, endBracket - startBracket - 1);
+            return new Table(fileName, rowCount, colCount, dataNames, data);
         }
 
         public Table(string tableName,int rowCount, int colCount,string[] titles, string[,] data)
@@ -89,8 +104,16 @@ namespace Core.Data.Table
 
             for(int i =0; i < titles.Length; ++i)
             {
-                SplitDataNameAndTitle(titles[i],out m_dataNames[i],out m_typeNames[i]);
+                TableUtility.SplitDataNameAndTypeName(titles[i],out m_dataNames[i],out m_typeNames[i]);
             }
+
+            //for(int y=0;y < m_rowCount; ++y)
+            //{
+            //    for(int x=0;x < m_colCount; ++x)
+            //    {
+            //        m_data[y, x] = TableUtility.RemoveSmallBracket(m_data[y,x]);
+            //    }
+            //}
         }
     }
 }
