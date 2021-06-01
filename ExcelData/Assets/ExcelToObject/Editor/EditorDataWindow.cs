@@ -56,7 +56,7 @@ namespace Core.Data
                     }
 
                     //TODO 추후에 코드 생성기 개선되면 자동으로 GameData클래스 생성되게 구현
-                    TableStream.WriteGameData("Assets/Scripts/GameData.cs", m_loadData.NameSpace, tables,
+                    TableStream.WriteGameData(codeFolderPath + "/GameData.cs", m_loadData.NameSpace, tables,
                         tsvPathes);
                 }
             }

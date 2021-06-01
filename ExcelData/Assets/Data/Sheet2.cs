@@ -1,13 +1,13 @@
 using UnityEngine;
 
 //코드 생성기를 통해 생성된 코드입니다
-namespace Core.Data
+namespace Core.Test
 {
-	public class Sheet
+	public class Sheet2
 	{
 		public int ID;
 		public string Name;
-		public int Int;
-		public float[] Float;
+		public string Description;
+		public Vector3 Location;
 	}
 }

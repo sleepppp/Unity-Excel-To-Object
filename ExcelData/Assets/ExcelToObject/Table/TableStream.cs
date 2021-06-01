@@ -158,6 +158,7 @@ namespace Core.Data
             generator.Using("System.Collections.Generic");
             generator.Using("UnityEngine");
             generator.Using("Core.Data.Utility");
+            generator.Using("Core.Data");
             generator.EndLine();
             // }} 
 

@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Core.Data.Utility;
+using Core.Data;
 
-namespace Core.Data
+namespace Core.Test
 {
 	public class GameData
 	{
-		public string SheetPath = "Assets/Data/TSV/Sheet.tsv";
+		public string SheetPath = "Assets/Data/Sheet.tsv";
 		public Dictionary<int,Sheet> Sheet;
 
-		public string Sheet2Path = "Assets/Data/TSV/Sheet2.tsv";
+		public string Sheet2Path = "Assets/Data/Sheet2.tsv";
 		public Dictionary<int,Sheet2> Sheet2;
 
 		public GameData()
