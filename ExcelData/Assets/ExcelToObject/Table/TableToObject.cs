@@ -55,7 +55,7 @@ namespace Core.Data.Utility
                     {
                         SetArrayValue(newData, arrayFieldInfo[x], table.data[y, x]);
                     }
-                    //TODO TypeConverter활용 해서 개선 필요~
+                    // {{ TODO TypeConverter활용 해서 개선 필요~
                     else if(fieldType == _vector3Type)
                     {
                         arrayFieldInfo[x].SetValue(newData, VectorConverter.ConvertToVector3(table.data[y, x]));
