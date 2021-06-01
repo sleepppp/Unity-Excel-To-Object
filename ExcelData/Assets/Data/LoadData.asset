@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af80c1804a852594a9a6369edffd6985, type: 3}
   m_Name: LoadData
   m_EditorClassIdentifier: 
-  NameSpace: 
-  ExcelFolder: {fileID: 0}
-  CodeFolder: {fileID: 0}
-  TSVFolder: {fileID: 0}
+  NameSpace: My.Data
+  ExcelFolder: {fileID: 102900000, guid: 0c82a74821df4664d92b22ebad2bd4ef, type: 3}
+  CodeFolder: {fileID: 102900000, guid: 1c29037c9af115c43821c4756b97feb1, type: 3}
+  TSVFolder: {fileID: 102900000, guid: e48bde2c779aef84d88f0f803841ec4f, type: 3}
