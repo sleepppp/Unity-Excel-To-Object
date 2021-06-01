@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Text.RegularExpressions;
 
 namespace Core.Data
 {
@@ -28,6 +28,11 @@ namespace Core.Data
             if (startBracket == -1 || endBracket == -1)
                 return origin;
             return origin.Substring(startBracket + 1, endBracket - startBracket - 1);
+        }
+
+        public static string[] Split(string origin, string token)
+        {
+            return Regex.Split(origin, token);
         }
 
         //TODO 데이터 타입에 오탈자 검사 해서 보정

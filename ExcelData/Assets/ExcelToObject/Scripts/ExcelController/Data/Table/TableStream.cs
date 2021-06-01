@@ -6,10 +6,27 @@ using OfficeOpenXml;
 using System.Text.RegularExpressions;
 using System.Text;
 using Core.Data.Code;
+
 namespace Core.Data
 {
     public static class TableStream
     {
+        struct LoadInfo
+        {
+            public string Path;
+            public string KeyTypeName;
+            public string ValueTypeName;
+            public string ValueName;
+
+            public LoadInfo(string path, string keyTypeName, string valueTypeName,string valueName)
+            {
+                Path = path;
+                KeyTypeName = keyTypeName;
+                ValueTypeName = valueTypeName;
+                ValueName = valueName;
+            }
+        }
+
         public static Table[] LoadTablesByXLSX(string path)
         {
             Table[] result = null;
@@ -117,6 +134,82 @@ namespace Core.Data
             }
             generator.EndBlock();
             if (isNamespace == false)
+            {
+                generator.EndBlock();
+            }
+
+            generator.WriteFile(path);
+        }
+
+        public static void WriteGameData(string path, string namespaceStr,Table[] tables,
+            string[] tablePaths)
+        {
+            if (tables == null)
+            {
+                throw new System.Exception("테이블이 존재하지 않습니다.");
+            }
+
+            bool isNamespace = string.IsNullOrEmpty(namespaceStr) == false;
+
+            CodeGenerator generator = new CodeGenerator();
+
+            // {{ NameSpace ~
+            generator.Using("System.Collections");
+            generator.Using("System.Collections.Generic");
+            generator.Using("UnityEngine");
+            generator.Using("Core.Data.Utility");
+            generator.EndLine();
+            // }} 
+
+            if(isNamespace)
+            {
+                generator.NameSpace(namespaceStr);
+                generator.StartBlock();
+            }
+            //{{ InNameSpace ~
+            {
+                generator.Class("GameData");
+                generator.StartBlock();
+                // {{ InClass ~
+                {
+                    //generator.Singleton("GameData");
+
+                    string stringDataName = "string";
+                    string constPath = "Path";
+
+                    List<LoadInfo> loadInfo = new List<LoadInfo>();
+
+                    for (int i = 0; i < tables.Length; ++i)
+                    {
+                        LoadInfo info = new LoadInfo(tablePaths[i], tables[i].typeNames[0],
+                            tables[i].name, tables[i].name);
+                        loadInfo.Add(info);
+
+                        generator.StringField(stringDataName, tables[i].name + constPath, tablePaths[i]);
+
+                        generator.Dictionary(tables[i].typeNames[0], tables[i].name, tables[i].name);
+
+                        generator.EndLine();
+                    }
+
+                    generator.StartConstructor("GameData");
+                    {
+                        for (int i = 0; i < loadInfo.Count; ++i)
+                        {
+                            generator.CheckTab();
+                            generator.Append(loadInfo[i].ValueName).Space().Append(" = ").Space()
+                                .Append("TableStream.LoadTableByTSV(").Append(tables[i].name + constPath)
+                                .Append(")").Append(".TableToDictionary<").Append(loadInfo[i].KeyTypeName)
+                                .Append(",").Append(loadInfo[i].ValueTypeName).Append(">();").EndLine();
+                        }
+                    }
+                    generator.EndConstructor();
+                }
+                // ~EndClass }}
+                generator.EndBlock();
+            }
+            // ~EndNameSpace }}
+            if(isNamespace)
             {
                 generator.EndBlock();
             }
