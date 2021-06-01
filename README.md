@@ -7,6 +7,7 @@ Read Excel File In Unity And Create Code Object
 How to use
 -------------
 
-1. Write data to Excel
+**1. Write data to Excel**
 
 ![캡처](https://user-images.githubusercontent.com/32008212/120332492-c3bdbf80-c329-11eb-9ea0-3fb7422a30e2.PNG)
+
