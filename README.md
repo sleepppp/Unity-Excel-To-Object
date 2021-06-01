@@ -11,3 +11,6 @@ How to use
 
 ![캡처](https://user-images.githubusercontent.com/32008212/120332492-c3bdbf80-c329-11eb-9ea0-3fb7422a30e2.PNG)
 
+**2. Save To Assets Folder**
+
+![캡처](https://user-images.githubusercontent.com/32008212/120333778-fe742780-c32a-11eb-84c3-9a6aebce304a.PNG)
