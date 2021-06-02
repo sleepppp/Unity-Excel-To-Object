@@ -13,6 +13,12 @@ Features
 How to use
 -------------
 
+**0. Download Project**
+
+After downloading the compressed file, place the 'ExcelToObject' folder in the Assets folder of your project.
+
+![image](https://user-images.githubusercontent.com/32008212/120430214-a0d6ee00-c3b1-11eb-9651-792c1cb65e6f.png)
+
 **1. Write data to excel**
 
 - The data type must be specified as follows.
