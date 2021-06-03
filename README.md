@@ -1,5 +1,8 @@
 Unity Excel To Object
 =======
+
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fsleepppp%2FUnity-Excel-To-Object&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
+
 Read excel file in Unity and create code object
 
 ![캡처](https://user-images.githubusercontent.com/32008212/120331760-12b72500-c329-11eb-8357-c55dd0a9b1ba.PNG)
