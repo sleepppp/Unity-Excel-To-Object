@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 using UnityEditor;
 
@@ -27,5 +26,6 @@ namespace Core.Data
         public UnityEngine.Object ExcelFolder;
         public UnityEngine.Object CodeFolder;
         public UnityEngine.Object TSVFolder;
+
     }
 }

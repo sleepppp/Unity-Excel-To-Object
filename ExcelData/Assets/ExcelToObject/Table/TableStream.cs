@@ -1,6 +1,5 @@
-﻿using System.Collections;
+﻿
 using System.Collections.Generic;
-using UnityEngine;
 using System.IO;
 using OfficeOpenXml;
 using System.Text.RegularExpressions;
@@ -96,17 +95,17 @@ namespace Core.Data
             }
         }
 
-        public static void WriteCodeByTable(string path, Table table)
+        public static void WriteExcelObjectByTable(string path, Table table)
         {
-            WriteCode(path, null, table);
+            WriteExcelObject(path, null, table);
         }
 
-        public static void WriteCodeByTable(string path, string namesapceStr, Table table)
+        public static void WriteExcelObjectByTable(string path, string namesapceStr, Table table)
         {
-            WriteCode(path, namesapceStr, table);
+            WriteExcelObject(path, namesapceStr, table);
         }
 
-        static void WriteCode(string path, string namespaceStr, Table table)
+        static void WriteExcelObject(string path, string namespaceStr, Table table)
         {
             if (table == null)
             {
@@ -119,7 +118,7 @@ namespace Core.Data
 
             generator.Using("UnityEngine");
             generator.EndLine();
-            generator.Comment("코드 생성기를 통해 생성된 코드입니다");
+            //generator.Comment("코드 생성기를 통해 생성된 코드입니다");
 
             if (isNamespace == false)
             {

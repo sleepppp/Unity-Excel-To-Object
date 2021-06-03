@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 using UnityEditor;
 using System.IO;
@@ -49,7 +48,7 @@ namespace Core.Data
                     string[] tsvPathes = new string[tables.Length];
                     for (int i = 0; i < tables.Length; ++i)
                     {
-                        TableStream.WriteCodeByTable(codeFolderPath + "/" + tables[i].name + ".cs",
+                        TableStream.WriteExcelObjectByTable(codeFolderPath + "/" + tables[i].name + ".cs",
                             m_loadData.NameSpace, tables[i]);
                         tsvPathes[i] = tsvFolderPath + "/" + tables[i].name + ".tsv";
                         TableStream.WriteTSVByTable(tsvPathes[i], tables[i]);

@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace Core.Data
 {
